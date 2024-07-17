@@ -10,7 +10,10 @@ function App() {
   const [checkboxes, setCheckboxes] = useState<Checkbox[]>([]);
 
   const { sendMessage, lastMessage, readyState } = useWebSocket(
-    import.meta.env.VITE_WS_URL || "ws://localhost:8000/api/v1/ws"
+    import.meta.env.VITE_WS_URL || "ws://localhost:8000/api/v1/ws",
+    {
+      shouldReconnect: () => true,
+    }
   );
 
   useEffect(() => {
