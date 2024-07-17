@@ -10,6 +10,10 @@ import axios from "axios";
 import HomePage from "./pages";
 import { Notifications } from "@mantine/notifications";
 import BooksPage from "./pages/books";
+import BookByIdPage from "./pages/book-by-id";
+import BookEditById from "./pages/book-edit-by-id";
+import { ModalsProvider } from "@mantine/modals";
+import BookCreatePage from "./pages/book-create";
 
 const theme = createTheme({
   primaryColor: "orange",
@@ -25,7 +29,23 @@ const router = createBrowserRouter([
     path: "/books",
     element: <BooksPage />,
   },
+  {
+    path: "/books/create",
+    element: <BookCreatePage />,
+  },
+  {
+    path: "/books/:bookId",
+    element: <BookByIdPage />,
+  },
+  {
+    path: "/books/:bookId/edit",
+    element: <BookEditById />,
+  },
 ]);
+
+if (import.meta.env.VITE_API_URL) {
+  axios.defaults.baseURL = import.meta.env.VITE_API_URL;
+}
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -41,7 +61,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     >
       <MantineProvider theme={theme}>
         <Notifications position="top-right" />
-        <RouterProvider router={router} />
+        <ModalsProvider>
+          <RouterProvider router={router} />
+        </ModalsProvider>
       </MantineProvider>
     </SWRConfig>
   </React.StrictMode>

@@ -3,8 +3,9 @@ import cafeBackgroundImage from "../assets/images/bg-cafe-2.jpg";
 import useSWR from "swr";
 import { Book } from "../lib/models";
 import Loading from "../components/loading";
-import { Alert } from "@mantine/core";
-import { IconAlertTriangleFilled } from "@tabler/icons-react";
+import { Alert, Button } from "@mantine/core";
+import { IconAlertTriangleFilled, IconPlus } from "@tabler/icons-react";
+import { Link } from "react-router-dom";
 
 export default function BooksPage() {
   const { data: books, error } = useSWR<Book[]>("/books");
@@ -23,7 +24,20 @@ export default function BooksPage() {
         </section>
 
         <section className="container mx-auto py-8">
-          <h1>รายการหนังสือ</h1>
+          <div className="flex justify-between">
+            <h1>รายการหนังสือ</h1>
+
+            <Button
+              component={Link}
+              leftSection={<IconPlus />}
+              to="/books/create"
+              size="xs"
+              variant="primary"
+              className="flex items-center space-x-2"
+            >
+              เพิ่มหนังสือ
+            </Button>
+          </div>
 
           {!books && !error && <Loading />}
           {error && (
@@ -47,6 +61,12 @@ export default function BooksPage() {
                 <div className="p-4">
                   <h2 className="text-lg font-semibold line-clamp-2">{book.title}</h2>
                   <p className="text-xs text-neutral-500">โดย {book.author}</p>
+                </div>
+
+                <div className="flex justify-end px-4 pb-2">
+                  <Button component={Link} to={`/books/${book.id}`} size="xs" variant="default">
+                    ดูรายละเอียด
+                  </Button>
                 </div>
               </div>
             ))}
