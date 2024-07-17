@@ -50,9 +50,6 @@ function App() {
           <span className="text-sm text-neutral-500">/ {checkboxes.length}</span>
         </div>
         <div className="flex flex-wrap gap-4 mt-4">
-          {/* {Array.from({ length: 100 }, (_, index) => (
-            <input key={index} type="checkbox" className="w-12 h-12" />
-          ))} */}
           {checkboxes.map((checkbox) => (
             <input
               key={checkbox.uuid}
@@ -72,6 +69,14 @@ function App() {
         </div>
 
         <div className="mt-4">#{readyState.toString()}</div>
+
+        {/* Divider */}
+        <div className="mt-8 border-t border-neutral-200"></div>
+
+        <footer className="text-center text-neutral-500 text-xs p-2">
+          <p>โปรแกรมนี้เป็นส่วนหนึงของรายวิชา 06016422 INTERNET OF THINGS (1/2567)</p>
+          <p>คณะเทคโนโลยีสารสนเทศ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง</p>
+        </footer>
       </div>
     </>
   );
