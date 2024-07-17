@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Layout from "../components/layout";
 import { Button, Checkbox, Container, Divider, NumberInput, TextInput } from "@mantine/core";
 import { isNotEmpty, useForm } from "@mantine/form";
