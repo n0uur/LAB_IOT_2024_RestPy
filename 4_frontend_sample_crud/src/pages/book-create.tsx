@@ -8,7 +8,6 @@ import { notifications } from "@mantine/notifications";
 import { Book } from "../lib/models";
 
 export default function BookCreatePage() {
-  const { bookId } = useParams();
   const navigate = useNavigate();
 
   const [isProcessing, setIsProcessing] = useState(false);
