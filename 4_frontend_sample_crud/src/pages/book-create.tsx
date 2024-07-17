@@ -91,6 +91,10 @@ export default function BookCreatePage() {
               {...bookCreateForm.getInputProps("year")}
             />
 
+            {/* TODO: เพิ่มรายละเอียดหนังสือ */}
+            {/* TODO: เพิ่มเรื่องย่อ */}
+            {/* TODO: เพิ่มหมวดหมู่(s) */}
+
             <Checkbox
               label="เผยแพร่"
               {...bookCreateForm.getInputProps("is_published", {
