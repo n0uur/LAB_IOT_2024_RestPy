@@ -78,12 +78,10 @@ async def websocket_endpoint(websocket: WebSocket):
                     'data': checkboxes
                 })
                 last_sync = time.time()
-                
+            # ##############################################################
             data = await websocket.receive_json()
             action = data.get('action')
             if action == 'update_checkbox':
-                # Update checkbox
-                # data = { action: 'update_checkbox', data: { uuid: '...', isChecked: true } }
                 uuid = data.get('data', {}).get('uuid')
                 isChecked = bool(data.get('data', {}).get('isChecked'))
                 index = indexes_cache.get(uuid)
